@@ -6,10 +6,12 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -18,6 +20,7 @@ import cat.marcserrano.provatecnica.entities.UserEntity;
 import cat.marcserrano.provatecnica.repositories.TodoRepository;
 import cat.marcserrano.provatecnica.repositories.UserRepository;
 
+@CrossOrigin
 @RestController
 public class TodoController {
 
@@ -36,7 +39,7 @@ public class TodoController {
 		if (!found.get().isEmpty()) {
 			return ResponseEntity.status(HttpStatus.ACCEPTED).body(found);
 		} else {
-			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("There are no TO-DOs registered.");
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"message\": \"There are no TO-DOs registered.\"}");
 		}
 	}
 	
@@ -79,6 +82,34 @@ public class TodoController {
 		}
 	}
 	
-	//TODO - Add Put mapping methods in TodoController
-	//TODO - Add Delete mapping methods in TodoController
+	@PutMapping("/users/{userId}/todos/edit") 
+	public ResponseEntity<Object> editTodo(@PathVariable int userId, @RequestBody TodoEntity editedTodo){
+		Optional<UserEntity> found = userrepo.findById(userId);
+		if (found != null) {
+			editedTodo.setUser(found.get());
+			Optional<TodoEntity> oldItem = todorepo.findById(editedTodo.getId());
+			if (oldItem != null) {
+				editedTodo.setId(oldItem.get().getId());
+				todorepo.delete(oldItem.get());
+				TodoEntity result = todorepo.save(editedTodo);
+				return ResponseEntity.status(HttpStatus.OK).body(result);
+			} else {
+				return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The To-Do made by that user has not been found.");
+			}
+		} else {
+			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("The user with ID " + userId + " has not been found.");
+		}
+	}
+	
+	@DeleteMapping("/todos/{todoId}/delete")
+	public ResponseEntity<Object> deleteTodo(@PathVariable int todoId) {
+		ResponseEntity<Object> result;
+		try {
+			todorepo.deleteById(todoId);
+			result = ResponseEntity.status(HttpStatus.NO_CONTENT).body("It has been deleted.");
+		} catch (Exception e) {
+			result = ResponseEntity.status(HttpStatus.BAD_REQUEST).body("It has not been deleted.");
+		}
+		return result;
+	}
 }
