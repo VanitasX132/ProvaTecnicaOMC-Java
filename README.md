@@ -24,6 +24,7 @@ A continuació es deixen alguns links per a verificar el correcte funcionament d
 
 **DELETE -** http://localhost:8000/todos/2/delete
 
+<br />
 
 ***Nota:*** Per a les trucades POST i PUT, tenen que tenir un 'body' específic, que es disporarà a continuació:
 
