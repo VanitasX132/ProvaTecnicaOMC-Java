@@ -48,6 +48,15 @@ Si el usuari ja existeix, només cal passar la id en la trucada com ja s'ha most
 En cambi, si el usuari no existeix, es tenen que fer tres trucades diferents per a poder asegurar el correcte funcionament:
 
 <ol>
-    <li><strong>POST -</strong> http://localhost:8000/todos/2/delete</li>
+    <li><strong>POST -</strong> http://localhost:8000/address/add<br/>
+        ```
+        {
+            "street": "nom del carrer",
+            "city": "nom de la ciutat",
+            "zipcode": "codi postal de la direccio",
+            "country": "pais de la direccio"
+        }
+        ```
+    </li>
     
 </ol>
