@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -25,6 +26,7 @@ public class UserController {
 		this.userrepo = userrepo;
 	}
 	
+	@CrossOrigin
 	@GetMapping("/users/all")
 	public ResponseEntity<Object> retrieveAllUsers() {
 		Optional<List<UserEntity>> found = Optional.of(userrepo.findAll());
@@ -46,18 +48,10 @@ public class UserController {
 		}
 	}
 	
+	@CrossOrigin
 	@PostMapping("/users/add")
 	public ResponseEntity<Object> addNewUser(@RequestBody UserEntity newUser) {
 		UserEntity savedTodo = userrepo.save(newUser);
 		return ResponseEntity.status(HttpStatus.CREATED).body(savedTodo);
 	}
-	
-	
-	//TODO - Add Put mapping methods in UserController
-	@PutMapping("/users/{id}/update")
-	public void underConstruction() {
-		
-	}
-	
-	//TODO - Add Delete mapping methods in UserController
 }

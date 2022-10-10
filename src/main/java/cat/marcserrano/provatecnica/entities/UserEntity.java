@@ -2,8 +2,6 @@ package cat.marcserrano.provatecnica.entities;
 
 import java.util.Objects;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,7 +19,6 @@ public class UserEntity {
 	private String password;
 	
 	@OneToOne
-	@JsonIgnore
 	private AddressEntity address;
 
 	public UserEntity(Integer id, String name, String username, String password, AddressEntity address) {
