@@ -35,3 +35,14 @@ A continuació es deixen alguns links per a verificar el correcte funcionament d
     "completed": true/false
 }
 ```
+
+### POST
+Si el usuari ja existeix, només cal passar la id en la trucada com ja s'ha mostrat abans, amb el 'body' següent:
+```
+{
+    "title": "El titol de la tasca nova",
+    "completed": true/false
+}
+```
+
+En cambi, si el usuari no existeix, es tenen que fer tres trucades diferents per a poder asegurar el correcte funcionament:
