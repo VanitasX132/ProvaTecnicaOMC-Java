@@ -49,14 +49,14 @@ En cambi, si el usuari no existeix, es tenen que fer tres trucades diferents per
 
 <ol>
     <li><strong>POST -</strong> http://localhost:8000/address/add<br/>
-        ```
+        <div>```
         {
             "street": "nom del carrer",
             "city": "nom de la ciutat",
             "zipcode": "codi postal de la direccio",
             "country": "pais de la direccio"
         }
-        ```
+        ```</div>
     </li>
     
 </ol>
