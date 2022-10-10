@@ -29,6 +29,7 @@ A continuació es deixen alguns links per a verificar el correcte funcionament d
 ***Nota:*** Per a les trucades POST i PUT, tenen que tenir un 'body' específic, que es disporarà a continuació:
 
 ### PUT
+La trucada put només fa falta passar-li aquests paràmetres, ja que la ID del propietari ja se li està donant en la mateixa trucada.
 ```
 {
     "title": "El titol de la tasca",
