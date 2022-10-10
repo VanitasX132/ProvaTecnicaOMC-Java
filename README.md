@@ -13,10 +13,15 @@ Primer de tot, cloneu el repositori dins de la vostra màquina local, o descarre
 A continuació es deixen alguns links per a verificar el correcte funcionament de la API:
 
 **GET -** http://localhost:8000/todos/all 
+
 **GET -** http://localhost:8000/todos/1 
+
 **GET -** http://localhost:8000/users/1/todos
+
 **POST -** http://localhost:8000/users/1/todos/add
+
 **PUT -** http://localhost:8000/users/1/todos/edit
+
 **DELETE -** http://localhost:8000/todos/2/delete
 
 ***Nota:*** Per a les trucades POST i PUT, tenen que tenir un 'body' específic, que es disporarà a continuació:
@@ -25,4 +30,4 @@ A continuació es deixen alguns links per a verificar el correcte funcionament d
 ```{
     "title": "El titol de la tasca",
     "completed": true/false
-} ```
+}
