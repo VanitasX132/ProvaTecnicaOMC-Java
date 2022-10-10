@@ -48,16 +48,16 @@ Si el usuari ja existeix, només cal passar la id en la trucada com ja s'ha most
 En cambi, si el usuari no existeix, es tenen que fer tres trucades diferents per a poder asegurar el correcte funcionament:
 
 <ol>
-    <li><strong>POST -</strong> http://localhost:8000/address/add</li>
-    <li><strong>POST -</strong> http://localhost:8000/users/add</li>
-    <li><strong>POST -</strong> http://localhost:8000/users/{id del nou usuari}/todos/add</li>
+    <li><strong>POST -</strong> http://localhost:8000/address/add </li>
+    <li><strong>POST -</strong> http://localhost:8000/users/add </li>
+    <li><strong>POST -</strong> http://localhost:8000/users/{id del nou usuari}/todos/add </li>
 </ol>
 
 ```
-        {
-            "street": "nom del carrer",
-            "city": "nom de la ciutat",
-            "zipcode": "codi postal de la direccio",
-            "country": "pais de la direccio"
-        }
-        ```
+{
+    "street": "nom del carrer",
+    "city": "nom de la ciutat",
+    "zipcode": "codi postal de la direccio",
+    "country": "pais de la direccio"
+}
+```
